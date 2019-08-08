@@ -1,17 +1,20 @@
 {
-	"name": "@elf/authentication",
+	"name": "elf-authentication",
 	"version": "1.0.0-alpha",
 	"main": "index.ts",
 	"repository": "https://github.com/christiandrey/authentication.git",
 	"author": "Christian Dréy <oluwaseun.adedire@gmail.com>",
 	"license": "MIT",
+	"scripts": {
+		"build": "yarn tsc --target es5 --experimentalDecorators --declaration index.ts"
+	},
 	"devDependencies": {
 		"@types/node": "^12.7.1",
 		"typescript": "^3.5.3"
 	},
 	"dependencies": {
-		"@elf/utils": "christiandrey/utils",
 		"bcrypt": "^3.0.6",
+		"elf-utils": "^1.0.6-alpha",
 		"express": "^4.17.1",
 		"jsonwebtoken": "^8.5.1",
 		"passport": "^0.4.0",

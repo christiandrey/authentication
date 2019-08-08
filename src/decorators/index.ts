@@ -1,4 +1,4 @@
-import { initializeRoutesMetadata, ROUTES_METADATA_KEY, IRouteDefinition } from "@elf/utils";
+import { initializeRoutesMetadata, ROUTES_METADATA_KEY, IRouteDefinition } from "elf-utils";
 import { IAuthorizeOptions } from "../interfaces/IAuthorizeOptions";
 
 export const AuthorizeRoutes = (options?: IAuthorizeOptions): ClassDecorator => {

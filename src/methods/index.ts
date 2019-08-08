@@ -11,7 +11,7 @@ import { IJwtPayloadUserDetails } from "../interfaces/IJwtPayloadUserDetails";
 import { ElfRole } from "../classes/ElfRole";
 import { JwtPayload } from "../classes/JwtPayload";
 import { ExtractJwt, VerifiedCallback, Strategy } from "passport-jwt";
-import { isEmail } from "@elf/utils";
+import { isEmail } from "elf-utils";
 
 const LOCAL_STRATEGY = passportLocal.Strategy;
 
