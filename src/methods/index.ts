@@ -50,7 +50,8 @@ export const CreateUserSession = (req: Request, user: ElfUser) => {
 	});
 };
 
-export const GetSignedToken = (user: ElfUser, secretOrPrivateKey: string, rest?: IJwtPayloadUserDetails, expiresIn: string = "7 days") => {
+export const GetSignedToken = (user: ElfUser, secretOrPrivateKey?: string, rest?: IJwtPayloadUserDetails, expiresIn: string = "7 days") => {
+	secretOrPrivateKey = secretOrPrivateKey || process.env.ELF_AUTH_CIPHER_KEY;
 	const { id, email, emailVerified } = user;
 	const role = user["role"] as ElfRole;
 
