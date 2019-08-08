@@ -84,7 +84,8 @@ export const AuthorizeUsers = (req: Request, allowedUsers: Array<string>) => {
 	if (!allowedUsers.includes(user.id)) throw new Error();
 };
 
-export function InitializeAuthentication<T extends ElfUser>(userRepository: Repository<T>, secretOrPrivateKey: string) {
+export function InitializeAuthentication<T extends ElfUser>(userRepository: Repository<T>, secretOrPrivateKey?: string) {
+	secretOrPrivateKey = secretOrPrivateKey || process.env.ELF_AUTH_CIPHER_KEY;
 	// ---------------------------------------------------
 	// LOCAL STRATEGY
 	// ---------------------------------------------------
