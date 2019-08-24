@@ -59,12 +59,11 @@ export const GetSignedToken = (user: ElfUser, secretOrPrivateKey?: string, rest?
 		sub: id,
 		authTime: Date.now(),
 		email,
-		emailVerified,
-		role: !!role ? role.name : undefined
+		emailVerified
 	} as JwtPayload;
 
 	if (!!rest) payload = Object.assign(payload, rest);
-	if (!!role) payload = Object.assign(payload, { role: role.name });
+	if (!!role) payload = Object.assign(payload, { role: role.name, permissions: role.permissions });
 
 	return JWT.sign(payload, secretOrPrivateKey, { expiresIn });
 };
@@ -82,6 +81,14 @@ export const AuthorizeUsers = (req: Request, allowedUsers: Array<string>) => {
 
 	if (!allowedUsers || allowedUsers.length < 1) return;
 	if (!allowedUsers.includes(user.id)) throw new Error();
+};
+
+export const AuthorizeUserPermissions = (req: Request, key: string) => {
+	const user = req.user as ElfUser;
+	const role = user["role"] as ElfRole;
+
+	if (!key || key.length < 1) return;
+	if (!role.getPermissions().includes(key)) throw new Error();
 };
 
 export function InitializeAuthentication<T extends ElfUser>(userRepository: Repository<T>, secretOrPrivateKey?: string) {

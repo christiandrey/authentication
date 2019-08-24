@@ -6,6 +6,7 @@ export class JwtPayload {
 	familyName: string;
 	emailVerified: boolean;
 	role: string;
+	permissions: string;
 
 	/**
 	 *
@@ -18,5 +19,6 @@ export class JwtPayload {
 		this.familyName = dto.familyName;
 		this.emailVerified = dto.emailVerified;
 		this.role = dto.role;
+		this.permissions = dto.permissions;
 	}
 }
