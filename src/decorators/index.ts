@@ -1,14 +1,17 @@
 import { initializeRoutesMetadata, ROUTES_METADATA_KEY, IRouteDefinition } from "elf-utils";
 import { IAuthorizeOptions } from "../interfaces/IAuthorizeOptions";
+import { PREFIX_AUTH_METADATA_KEY } from "elf-utils/src/constants";
 
 export const AuthorizeRoutes = (options?: IAuthorizeOptions): ClassDecorator => {
 	return (target: Object) => {
 		initializeRoutesMetadata(target);
 
-		let routes = Reflect.getMetadata(ROUTES_METADATA_KEY, target) as Array<IRouteDefinition>;
-		routes = routes.map(o => ({ ...o, authorize: true }));
+		Reflect.defineMetadata(PREFIX_AUTH_METADATA_KEY, true, target);
 
-		Reflect.defineMetadata(ROUTES_METADATA_KEY, routes, target);
+		// let routes = Reflect.getMetadata(ROUTES_METADATA_KEY, target) as Array<IRouteDefinition>;
+		// routes = routes.map(o => ({ ...o, authorize: true }));
+
+		// Reflect.defineMetadata(ROUTES_METADATA_KEY, routes, target);
 	};
 };
 

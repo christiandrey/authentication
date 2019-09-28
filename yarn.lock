@@ -314,10 +314,10 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-elf-utils@^1.0.6-alpha:
-  version "1.0.6-alpha"
-  resolved "https://registry.yarnpkg.com/elf-utils/-/elf-utils-1.0.6-alpha.tgz#d961671d5ce80cb6fded1501f165de40db6e6cd2"
-  integrity sha512-BTsbpsU/venNvQ0XTn9kvMYA2+xfznKamUTIthDtUUiraJrq5YtQZRlxdu1UM85RFFBGYDkMLnV9FyuBpDt34Q==
+elf-utils@^1.0.8-alpha:
+  version "1.0.8-alpha"
+  resolved "https://registry.yarnpkg.com/elf-utils/-/elf-utils-1.0.8-alpha.tgz#6a19ee7cec7daa7cf5b5b9d159d167e6f73625f9"
+  integrity sha512-T8TSULdIpb2Sm54WKspLv/cL++ImeeP8IZWwnXVv4u2MRgktwbGb33eiwAgD+twGJTL7lsrl/580CrVlyvfO2w==
   dependencies:
     glob "^7.1.4"
     reflect-metadata "^0.1.13"
