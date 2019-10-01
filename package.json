@@ -1,6 +1,6 @@
 {
 	"name": "elf-authentication",
-	"version": "1.0.4-alpha",
+	"version": "1.0.8-alpha",
 	"main": "index.js",
 	"repository": "https://github.com/christiandrey/authentication.git",
 	"author": "Christian Dréy <oluwaseun.adedire@gmail.com>",
@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"bcrypt": "^3.0.6",
-		"elf-utils": "^1.0.8-alpha",
+		"elf-utils": "^1.0.9-alpha",
 		"express": "^4.17.1",
 		"jsonwebtoken": "^8.5.1",
 		"passport": "^0.4.0",

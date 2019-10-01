@@ -1,17 +1,14 @@
 import { initializeRoutesMetadata, ROUTES_METADATA_KEY, IRouteDefinition } from "elf-utils";
 import { IAuthorizeOptions } from "../interfaces/IAuthorizeOptions";
-import { PREFIX_AUTH_METADATA_KEY } from "elf-utils/src/constants";
 
 export const AuthorizeRoutes = (options?: IAuthorizeOptions): ClassDecorator => {
 	return (target: Object) => {
 		initializeRoutesMetadata(target);
 
-		Reflect.defineMetadata(PREFIX_AUTH_METADATA_KEY, true, target);
+		let routes = Reflect.getMetadata(ROUTES_METADATA_KEY, target) as Array<IRouteDefinition>;
+		routes = routes.map(o => ({ ...o, ...options, authorize: true }));
 
-		// let routes = Reflect.getMetadata(ROUTES_METADATA_KEY, target) as Array<IRouteDefinition>;
-		// routes = routes.map(o => ({ ...o, authorize: true }));
-
-		// Reflect.defineMetadata(ROUTES_METADATA_KEY, routes, target);
+		Reflect.defineMetadata(ROUTES_METADATA_KEY, routes, target);
 	};
 };
 
@@ -22,6 +19,7 @@ export const Authorize = (options?: IAuthorizeOptions): MethodDecorator => {
 		const routes = Reflect.getMetadata(ROUTES_METADATA_KEY, target.constructor) as Array<IRouteDefinition>;
 		const index = routes.findIndex(o => o.action === propertyName);
 		const payload = {
+			...options,
 			action: propertyName,
 			authorize: true
 		} as IRouteDefinition;
