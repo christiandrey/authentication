@@ -5,7 +5,7 @@ export abstract class ElfRole {
 	id: string;
 	@Column({ nullable: false })
 	name: string;
-	@Column({ nullable: true })
+	@Column({ type: "longtext", nullable: true })
 	permissions: string;
 
 	getPermissions(): Array<string> {
