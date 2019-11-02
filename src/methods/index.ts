@@ -115,6 +115,12 @@ export function InitializeAuthentication<T extends ElfUser>(userRepository: Repo
 				const user = await userRepository.findOne({ where: { email } });
 
 				if (!!user) {
+					if (!!user.isDisabled) {
+						return callback(null, null, {
+							message: "User is disabled."
+						});
+					}
+
 					const passwordValidationResult = await bcrypt.compare(password, user.passwordHash);
 					if (passwordValidationResult) {
 						return callback(null, user, {
@@ -144,7 +150,7 @@ export function InitializeAuthentication<T extends ElfUser>(userRepository: Repo
 				const id = jwtPayload.sub;
 				const user = await userRepository.findOne({ where: { id } });
 
-				if (!!user) {
+				if (!!user && !user.isDisabled) {
 					const { id } = user;
 					const role = user["role"] as ElfRole;
 					const authenticatedUser = { id } as T;

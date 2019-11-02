@@ -1,4 +1,5 @@
 import { PrimaryGeneratedColumn, Column } from "typeorm";
+import { IsEmail } from "class-validator";
 
 export abstract class ElfUser {
 	@PrimaryGeneratedColumn("uuid")
@@ -6,11 +7,14 @@ export abstract class ElfUser {
 	@Column({ nullable: true })
 	username: string;
 	@Column({ unique: true })
+	@IsEmail()
 	email: string;
 	@Column({ default: false })
 	emailVerified: boolean;
 	@Column({ nullable: false })
 	passwordHash: string;
+	@Column({ default: false })
+	isDisabled: boolean;
 
 	/**
 	 *
@@ -21,5 +25,6 @@ export abstract class ElfUser {
 		this.email = dto.email;
 		this.emailVerified = dto.emailVerified;
 		this.passwordHash = dto.passwordHash;
+		this.isDisabled = dto.isDisabled;
 	}
 }
