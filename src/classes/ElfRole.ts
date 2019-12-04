@@ -1,9 +1,11 @@
 import { Column, PrimaryGeneratedColumn } from "typeorm";
+import { IsNotEmpty } from "class-validator";
 
 export abstract class ElfRole {
 	@PrimaryGeneratedColumn("uuid")
 	id: string;
 	@Column({ nullable: false })
+	@IsNotEmpty()
 	name: string;
 	@Column({ type: "longtext", nullable: true })
 	permissions: string;
