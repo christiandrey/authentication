@@ -14,7 +14,7 @@
     "class-validator": "0.x.x",
     "express": "4.x.x",
     "typeorm": "0.2.x",
-    "typescript": "^3.5.3"
+    "typescript": "^3.7.4"
   },
   "dependencies": {
     "elf-utils": "1.1.x",
