@@ -88,7 +88,8 @@ Elf Authentication makes available the following helper methods.
 ---
 
 The following environment variables are available to use to customise the authorization process:
-| Tables | Are |
-| ------------- |-------------|
-| **ELF_AUTH_CIPHER_KEY** | Use this to define an encryption key for authorization. |
+
+| Variable                | Description                                                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------------ |
+| **ELF_AUTH_CIPHER_KEY** | Use this to define an encryption key for authorization.                                                |
 | **ELF_AUTH_EXPIRES_IN** | Use this to customise how long the generated access token is valid for. The default value is `7 days`. |
